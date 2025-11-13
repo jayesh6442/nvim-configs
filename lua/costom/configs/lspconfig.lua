@@ -1,42 +1,25 @@
 local lspconfig = require "lspconfig"
 
--- TS, JS, React, React Native
-
--- HTML
-lspconfig.html.setup {}
-
--- CSS
-lspconfig.cssls.setup {}
-
--- TailwindCSS
-lspconfig.tailwindcss.setup {}
-
--- JSON
-lspconfig.jsonls.setup {}
-
--- Node backend
-lspconfig.eslint.setup {}
-
--- YAML
-lspconfig.yamlls.setup {}
-
--- Docker
-lspconfig.dockerls.setup {}
-
--- GraphQL
-lspconfig.graphql.setup {}
-
--- Bash
-lspconfig.bashls.setup {}
-
--- Astro
-lspconfig.astro.setup {}
+-- TypeScript / JavaScript / TSX / JSX
 lspconfig.tsserver.setup {
   filetypes = {
-    javascript",
+    "javascript",
     "javascriptreact",
     "typescript",
     "typescriptreact",
     "json"
-  }
+  },
 }
+
+-- HTML (for web RN)
+lspconfig.html.setup {}
+
+-- CSS (for RN Web + Tailwind)
+lspconfig.cssls.setup {}
+
+-- JSON
+lspconfig.jsonls.setup {}
+
+-- ESLint
+lspconfig.eslint.setup {}
+

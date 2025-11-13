@@ -1,17 +1,15 @@
 local options = {
   ensure_installed = {
-    "tsx",
     "javascript",
     "typescript",
-    "html",
-    "css",
+    "tsx",
     "json",
-    "graphql",
-    "bash",
     "lua",
     "vim",
-    "dockerfile"
-  }
+    "html",
+    "css"
+  },
+  highlight = { enable = true },
 }
 
 return options
