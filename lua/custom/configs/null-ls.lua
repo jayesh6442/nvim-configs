@@ -1,13 +1,13 @@
 local null_ls = require "null-ls"
 
-local b = null_ls.builtins
+local formatting = null_ls.builtins.formatting
+local diagnostics = null_ls.builtins.diagnostics
 
-local sources = {
-  b.formatting.prettierd,
-  b.diagnostics.eslint,
-}
-
-null_ls.setup {
-  sources = sources,
-}
+null_ls.setup({
+  sources = {
+    formatting.prettierd,   -- FORMATTER
+    diagnostics.eslint,     -- optional
+    null_ls.builtins.code_actions.eslint, -- optional
+  },
+})
 
