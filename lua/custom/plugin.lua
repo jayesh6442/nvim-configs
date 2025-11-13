@@ -1,5 +1,5 @@
 return {
-
+ -- changs
   -- LSP
   {
     "neovim/nvim-lspconfig",
@@ -61,6 +61,12 @@ return {
     require "custom.configs.gitsigns"
   end,
 },
-
+{
+  "nvimtools/none-ls.nvim",
+  config = function()
+    require "custom.configs.null-ls"
+    require "custom.configs.format_on_save"
+  end,
+},
 }
 
