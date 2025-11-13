@@ -24,8 +24,8 @@ map("n", "gr", vim.lsp.buf.references)
 map("n", "K", vim.lsp.buf.hover)
 map("n", "<leader>rn", vim.lsp.buf.rename)
 
--- Format
+
 map("n", "<leader>f", function()
-  vim.lsp.buf.format()
-end)
+  vim.lsp.buf.format({ async = true })
+end, { desc = "Format file" })
 
