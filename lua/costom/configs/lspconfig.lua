@@ -1,7 +1,6 @@
 local lspconfig = require "lspconfig"
 
 -- TS, JS, React, React Native
-lspconfig.tsserver.setup {}
 
 -- HTML
 lspconfig.html.setup {}
@@ -32,4 +31,12 @@ lspconfig.bashls.setup {}
 
 -- Astro
 lspconfig.astro.setup {}
-
+lspconfig.tsserver.setup {
+  filetypes = {
+    javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "json"
+  }
+}
