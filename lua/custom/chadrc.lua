@@ -7,7 +7,7 @@ M.ui = {
 -- THIS MUST EXIST OTHERWISE NOTHING IN custom/ LOADS
 M.plugins = "custom.plugins"
 
-M.mappings = require "custom.mappings"
+M.mappings = require "custom.configs.mappings"
 
 return M
 

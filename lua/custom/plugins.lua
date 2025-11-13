@@ -1,10 +1,32 @@
 return {
- -- changs
-  -- LSP
+
+  -- Mason (LSP installer)
+  {
+    "williamboman/mason.nvim",
+    opts = {},
+  },
+
+  {
+    "williamboman/mason-lspconfig.nvim",
+    dependencies = { "williamboman/mason.nvim" },
+    opts = {
+      ensure_installed = {
+        "ts_ls",      -- NEW NAME
+        "eslint",
+        "jsonls",
+        "html",
+        "cssls",
+        "lua_ls",
+        "tailwindcss",
+      },
+    },
+  },
+
+  -- LSP (NEW API)
   {
     "neovim/nvim-lspconfig",
     config = function()
-      require "custom.configs.lspconfig"
+      require "custom.configs.lsp"
     end,
   },
 
@@ -14,15 +36,16 @@ return {
     opts = require "custom.configs.treesitter",
   },
 
-  -- Null-ls (formatting)
+  -- NONE-LS ONLY (remove null-ls)
   {
-    "jose-elias-alvarez/null-ls.nvim",
+    "nvimtools/none-ls.nvim",
     config = function()
       require "custom.configs.null-ls"
+      require "custom.configs.format_on_save"
     end,
   },
 
-  -- Snippet engine
+  -- LuaSnip
   {
     "L3MON4D3/LuaSnip",
     version = "v2.*",
@@ -31,46 +54,34 @@ return {
     end,
   },
 
-  -- VSCode snippets (React + RN)
-  {
-    "rafamadriz/friendly-snippets",
-  },
+  -- VSCode snippets
+  { "rafamadriz/friendly-snippets" },
 
-  -- React / JSX syntax
-  { "pangloss/vim-javascript" },
-  { "MaxMEllon/vim-jsx-pretty" },
+  -- Emmet
+  { "mattn/emmet-vim" },
 
-  -- Emmet for JSX/TSX
-  {
-    "mattn/emmet-vim",
-  },
-
-  -- Tailwind highlight (RN Web / Expo web)
+  -- Colorizer (NvChad already loads this, but OK)
   { "NvChad/nvim-colorizer.lua" },
 
-  -- React Native debugging (DAP)
+  -- DAP
   { "mfussenegger/nvim-dap" },
+
   {
     "mxsdev/nvim-dap-vscode-js",
     dependencies = { "mfussenegger/nvim-dap" },
   },
-  {
-  "rcarriga/nvim-dap-ui",
-  dependencies = { "mfussenegger/nvim-dap" },
-},
 
   {
-  "lewis6991/gitsigns.nvim",
-  config = function()
-    require "custom.configs.gitsigns"
-  end,
-},
-{
-  "nvimtools/none-ls.nvim",
-  config = function()
-    require "custom.configs.null-ls"
-    require "custom.configs.format_on_save"
-  end,
-},
+    "rcarriga/nvim-dap-ui",
+    dependencies = { "mfussenegger/nvim-dap" },
+  },
+
+  -- Gitsigns
+  {
+    "lewis6991/gitsigns.nvim",
+    config = function()
+      require "custom.configs.gitsigns"
+    end,
+  },
 }
 
