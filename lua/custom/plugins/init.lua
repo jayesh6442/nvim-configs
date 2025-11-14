@@ -1,4 +1,4 @@
-return {
+local plugins =  {
 
   -- Mason (LSP installer)
   {
@@ -85,3 +85,4 @@ return {
   },
 }
 
+return plugins
