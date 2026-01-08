@@ -5,6 +5,9 @@ local plugins =  {
     "williamboman/mason.nvim",
     opts = {},
   },
+    {
+    "neovim/nvim-lspconfig",
+  },
 
   {
     "williamboman/mason-lspconfig.nvim",
@@ -15,6 +18,7 @@ local plugins =  {
         "eslint",
         "jsonls",
         "html",
+        "jdtls",
         "cssls",
         "lua_ls",
         "tailwindcss",
@@ -26,7 +30,6 @@ local plugins =  {
   {
     "neovim/nvim-lspconfig",
     config = function()
-      require "custom.configs.lsp"
     end,
   },
 
@@ -90,6 +93,20 @@ local plugins =  {
     vim.lsp.enable('jdtls')
   end,
 },
+
+
+   {
+    "nvim-java/nvim-java",
+    ft = { "java" },
+    dependencies = {
+      "neovim/nvim-lspconfig",
+      "williamboman/mason.nvim",
+    },
+    config = function()
+      require("java").setup()
+      vim.lsp.enable("jdtls")
+    end,
+  },
 }
 
 return plugins
