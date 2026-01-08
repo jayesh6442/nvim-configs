@@ -38,3 +38,32 @@ lspconfig.lua_ls.setup {
   capabilities = capabilities,
 }
 
+
+lspconfig.jdtls.setup {
+  cmd = { "jdtls" },
+  filetypes = { "java" },
+  root_dir = lspconfig.util.root_pattern(
+    "pom.xml",
+    "build.gradle",
+    ".git"
+  ),
+  settings = {
+    java = {
+      signatureHelp = { enabled = true },
+      contentProvider = { preferred = "fernflower" },
+      completion = {
+        favoriteStaticMembers = {
+          "org.hamcrest.MatcherAssert.assertThat",
+          "org.hamcrest.Matchers.*",
+          "org.junit.jupiter.api.Assertions.*",
+        },
+      },
+      sources = {
+        organizeImports = {
+          starThreshold = 9999,
+          staticStarThreshold = 9999,
+        },
+      },
+    },
+  },
+}

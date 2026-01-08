@@ -83,6 +83,13 @@ local plugins =  {
       require "custom.configs.gitsigns"
     end,
   },
+  {
+  'nvim-java/nvim-java',
+  config = function()
+    require('java').setup()
+    vim.lsp.enable('jdtls')
+  end,
+},
 }
 
 return plugins
