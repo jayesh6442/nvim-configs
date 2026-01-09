@@ -34,6 +34,10 @@ local plugins =  {
   },
 
   -- Treesitter
+
+
+
+
 {
   "nvim-tree/nvim-tree.lua",
   config = function(_, opts)
