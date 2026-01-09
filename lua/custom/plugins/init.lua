@@ -124,4 +124,11 @@ local plugins =  {
   },
 }
 
+-- After loading the theme, apply custom highlights
+vim.schedule(function()
+  local ok, highlights = pcall(require, "custom.highlights")
+  if ok and type(highlights.apply) == "function" then
+    highlights.apply()
+  end
+end)
 return plugins
