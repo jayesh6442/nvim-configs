@@ -1,6 +1,6 @@
 local map = vim.keymap.set
 local ls = require "luasnip"
-
+pcall(vim.keymap.del, "n", "<C-n>")
 -- Snippet jump
 map({ "i", "s" }, "<Tab>", function()
   if ls.expand_or_jumpable() then

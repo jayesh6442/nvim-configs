@@ -34,10 +34,20 @@ local plugins =  {
   },
 
   -- Treesitter
-  {
-    "nvim-treesitter/nvim-treesitter",
-    opts = require "custom.configs.treesitter",
-  },
+{
+  "nvim-tree/nvim-tree.lua",
+  config = function(_, opts)
+    opts.view.side = "right"
+    require("nvim-tree").setup(opts)
+  end,
+},
+
+
+
+ -- {
+   -- "nvim-treesitter/nvim-treesitter",
+   -- opts = require "custom.configs.treesitter",
+ -- },
 
   -- NONE-LS ONLY (remove null-ls)
   {
