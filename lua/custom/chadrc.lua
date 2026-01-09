@@ -10,6 +10,16 @@ M.ui = {
   theme = "catppuccin",
   theme_toggle = { "catppuccin", "one_light" },
   
+  hl_override = {
+    TelescopeBorder = { fg = "#89B4FA", bg = "#181825" },
+    TelescopePromptBorder = { fg = "#F38BA8", bg = "#181825" },
+    TelescopePromptTitle = { fg = "#1E1E2E", bg = "#F38BA8", bold = true },
+    TelescopeResultsBorder = { fg = "#89B4FA", bg = "#181825" },
+    TelescopePreviewBorder = { fg = "#A6E3A1", bg = "#181825" },
+    
+    NvimTreeNormal = { bg = "#181825" },
+    CursorLineNr = { fg = "#F9E2AF", bold = true },
+  },
   -- Transparency Settings
   transparency = false,
   
