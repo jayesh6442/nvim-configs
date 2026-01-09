@@ -1,5 +1,5 @@
 -- ══════════════════════════════════════════════════════════════════════
--- Neovim Options - Professional Configuration (Fixed)
+-- Neovim Options - Professional Configuration (Auto-Apply Fix)
 -- ══════════════════════════════════════════════════════════════════════
 -- Load default NvChad options first
 require "nvchad.options"
@@ -15,11 +15,11 @@ local g = vim.g
 opt.number = true
 opt.relativenumber = true
 opt.numberwidth = 4
-opt.signcolumn = "yes" -- Always show sign column
+opt.signcolumn = "yes"
 
 -- Cursor line
 opt.cursorline = true
-opt.cursorlineopt = "both" -- Highlight both line number and text
+opt.cursorlineopt = "both"
 
 -- Colors
 opt.termguicolors = true
@@ -27,7 +27,7 @@ opt.termguicolors = true
 -- Visual guides
 opt.colorcolumn = "80,120"
 
--- Simple fillchars (no fancy Unicode that breaks)
+-- Simple fillchars
 opt.fillchars = {
   eob = " ",
   fold = " ",
@@ -260,17 +260,35 @@ opt.backspace = { "indent", "eol", "start" }
 opt.joinspaces = false
 
 -- ══════════════════════════════════════════════════════════════════════
--- Load Custom Highlights (if available)
+-- Auto-Apply Custom Highlights (FIXED)
 -- ══════════════════════════════════════════════════════════════════════
 
+-- Function to apply custom highlights
+local function apply_custom_highlights()
+  local ok, highlights = pcall(require, "custom.highlights")
+  if ok and type(highlights.apply) == "function" then
+    highlights.apply()
+  end
+end
+
+-- Apply on startup (after UI is ready)
+vim.api.nvim_create_autocmd("UIEnter", {
+  callback = function()
+    vim.defer_fn(apply_custom_highlights, 100)
+  end,
+})
+
+-- Apply when colorscheme changes
 vim.api.nvim_create_autocmd("ColorScheme", {
   pattern = "*",
   callback = function()
-    vim.defer_fn(function()
-      local ok, highlights = pcall(require, "custom.highlights")
-      if ok and type(highlights.apply) == "function" then
-        highlights.apply()
-      end
-    end, 50)
+    vim.defer_fn(apply_custom_highlights, 50)
+  end,
+})
+
+-- Also apply after VimEnter as backup
+vim.api.nvim_create_autocmd("VimEnter", {
+  callback = function()
+    vim.defer_fn(apply_custom_highlights, 150)
   end,
 })

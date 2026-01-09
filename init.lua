@@ -16,7 +16,7 @@ if not vim.uv.fs_stat(lazypath) then
 end
 
 vim.opt.rtp:prepend(lazypath)
-
+-- Auto-apply custom highlights on startup
 local lazy_config = require "configs.lazy"
 
 -- Load plugins
@@ -41,4 +41,3 @@ require "autocmds"
 vim.schedule(function()
   require "mappings"
 end)
-
