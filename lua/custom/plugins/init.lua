@@ -42,6 +42,7 @@ local plugins =  {
   "nvim-tree/nvim-tree.lua",
   config = function(_, opts)
     opts.view.side = "right"
+    opts.view.width = 40
     require("nvim-tree").setup(opts)
   end,
 },
