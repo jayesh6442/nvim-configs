@@ -239,12 +239,16 @@ M.base46 = {
 -- Plugin Configuration
 -- ══════════════════════════════════════════════════════════════════════
 
+-- THIS MUST EXIST OTHERWISE NOTHING IN custom/ LOADS
 M.plugins = "custom.plugins"
 
 -- ══════════════════════════════════════════════════════════════════════
--- Mappings
+-- Mappings (Load safely with pcall to avoid errors if file missing)
 -- ══════════════════════════════════════════════════════════════════════
 
-M.mappings = require "custom.configs.mappings"
+local mappings_ok, mappings = pcall(require, "custom.configs.mappings")
+if mappings_ok then
+  M.mappings = mappings
+end
 
 return M
