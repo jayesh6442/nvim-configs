@@ -8,23 +8,6 @@ local plugins = {
     opts = {},
   },
 
-
-  {
-    "danilamihailov/beacon.nvim",
-    event = "BufReadPost",
-    config = function()
-     require("beacon").setup({
-        enabled = true,
-        speed = 2,
-        width = 40,
-        winblend = 20,
-        highlight = { bg = "#245361" }, -- Gotham accent
-    })
-  end,
-  },
-
-
-
   {
     "williamboman/mason-lspconfig.nvim",
     dependencies = { "williamboman/mason.nvim" },
