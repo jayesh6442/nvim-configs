@@ -242,6 +242,9 @@ M.base46 = {
 -- THIS MUST EXIST OTHERWISE NOTHING IN custom/ LOADS
 M.plugins = "custom.plugins"
 
+M.options = {
+  guicursor = "a:ver25",
+}
 -- ══════════════════════════════════════════════════════════════════════
 -- Mappings (Load safely with pcall to avoid errors if file missing)
 -- ══════════════════════════════════════════════════════════════════════

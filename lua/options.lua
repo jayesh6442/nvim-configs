@@ -203,7 +203,7 @@ vim.api.nvim_create_autocmd("BufReadPre", {
       vim.opt_local.signcolumn = "no"
       vim.opt_local.foldcolumn = "0"
       vim.schedule(function()
-        vim.bo.syntax = ""
+        vim.cmd("syntax off")
       end)
     end
   end,
