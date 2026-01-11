@@ -14,7 +14,6 @@ ls.config.set_config {
   },
 }
 
--- Load VSCode React + React Native snippets
 require("luasnip.loaders.from_vscode").lazy_load {
   paths = {
     vim.fn.stdpath("data") .. "/lazy/friendly-snippets",
